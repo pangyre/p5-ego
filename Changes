@@ -1,0 +1,4 @@
+This file documents the revision history for Perl extension Ego.
+
+0.01  Mon Oct 11 18:32:45 PDT 2010
+        - Stub app, mostly from catalyst.pl.
