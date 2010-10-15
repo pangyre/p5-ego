@@ -18,6 +18,9 @@ $VERSION = eval $VERSION;
 __PACKAGE__->config(
     name => "Ego",
     disable_component_resolution_regex_fallback => 1,
+    "View::TT" => {
+        INCLUDE_PATH => [ __PACKAGE__->path_to("root/tt/src") ],
+    },
 );
 
 # Start the application
