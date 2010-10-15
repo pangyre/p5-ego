@@ -7,9 +7,11 @@
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
 <body>
-<header>
-<h1>[% title || "Untitled page: " _ c.config.name %]</h1>
-</header>
+ <header>
+  <h1>[% title || "Untitled page: " _ c.config.name %]</h1>
+ </header>
 [% content %]
-</body>
+  <footer>
+  </footer>
+ </body>
 </html>

@@ -1,13 +1,27 @@
 package Ego::Controller::Error;
 use Moose;
 use namespace::autoclean;
+use HTTP::Status qw(:constants :is status_message);
 
 BEGIN { extends 'Catalyst::Controller' }
 
 sub process :Private {
-    my ( $self, $c ) = @_;
-    $c->stash( template => "error/generic.tt" );
-    $c->clear_errors;
+    my ( $self, $c, $status, @err ) = @_;
+    $c->response->status( $status ||= HTTP_INTERNAL_SERVER_ERROR );
+
+    my $msg = join("\n", @err);
+    # access control here? 
+    $msg ||= join("\n", @{$c->error});
+    $msg ||= status_message($status);
+
+    $c->stash( template => "error/generic.tt",
+               message => $msg,
+               title => join(" \x{b7} ",
+                             $c->config->{name},
+                             $status,
+                             status_message($status), )
+        );
+    1;
 }
 
 #sub index :Path :Args(0) {
