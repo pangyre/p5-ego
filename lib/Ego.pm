@@ -13,15 +13,19 @@ use Catalyst qw(
 extends "Catalyst";
 
 our $VERSION = "0.01";
-$VERSION = eval $VERSION;
 
 __PACKAGE__->config(
     name => "Ego",
-    disable_component_resolution_regex_fallback => 1,
+    # disable_component_resolution_regex_fallback => 1,
     "View::TT" => {
         INCLUDE_PATH => [ __PACKAGE__->path_to("root/tt/src"),
                           __PACKAGE__->path_to("root/tt") ],
         WRAPPER => "lib/html5.tt",
+    },
+    static => {
+        debug => 1,
+        include_path => [ __PACKAGE__->path_to('root', 'static') ],
+        # ignore_extensions => [], # Turns all others, like html, on.
     },
 );
 

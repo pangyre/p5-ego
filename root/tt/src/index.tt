@@ -1,3 +1,1 @@
-[% WRAPPER lib/html5.tt %]
 O HAI
-[% END %]

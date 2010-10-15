@@ -21,7 +21,7 @@ sub end :Private {
     my ( $self, $c ) = @_;
 
     $c->forward("render") unless @{$c->error};
-
+    return;
     # If there was an error in the render, process it and re-render.
     $c->forward("Error") and $c->forward("render")
         if @{$c->error};
