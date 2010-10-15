@@ -6,9 +6,8 @@ BEGIN { extends 'Catalyst::Controller' }
 
 sub process :Private {
     my ( $self, $c ) = @_;
+    $c->stash( template => "error/generic.tt" );
     $c->clear_errors;
-    $c->response->status(503);
-    $c->response->body("O NOES");
 }
 
 #sub index :Path :Args(0) {

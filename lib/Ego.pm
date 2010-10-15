@@ -19,7 +19,9 @@ __PACKAGE__->config(
     name => "Ego",
     disable_component_resolution_regex_fallback => 1,
     "View::TT" => {
-        INCLUDE_PATH => [ __PACKAGE__->path_to("root/tt/src") ],
+        INCLUDE_PATH => [ __PACKAGE__->path_to("root/tt/src"),
+                          __PACKAGE__->path_to("root/tt") ],
+        WRAPPER => "lib/html5.tt",
     },
 );
 

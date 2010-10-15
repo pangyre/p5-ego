@@ -21,14 +21,19 @@ sub end :Private {
     my ( $self, $c ) = @_;
 
     $c->forward("render") unless @{$c->error};
+
     # If there was an error in the render, process it and re-render.
+    $c->forward("Error") and $c->forward("render")
+        if @{$c->error};
+
     if ( @{$c->error} )
     {
-        $c->forward("Error") and $c->forward("render");
+        my $mess = join("\n", @{$c->error});
+        $c->response->content_type("text/plain");
+        $c->response->body("Unrecoverable error. Fire the developer.\n\n"
+                           . $mess );
+        $c->clear_errors;
     }
-
-    # If there is a new error at this point, it's time to redirect to
-    # a static page or do something terribly simple...
 }
 
 __PACKAGE__->meta->make_immutable;
