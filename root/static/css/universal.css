@@ -1,5 +1,24 @@
 body {
+ background-color:#fffffd;
+ color:#001;
  font-family:"helvetica neue", helvetica, sans-serif;
  font-size:.8em; 
  line-height:1.125em; /* 16 font-size:0.75em; */
+}
+
+header {
+ margin:20px 0 0 10%;
+ padding:0;
+ border:0;
+}
+#content {
+ margin:20px 20% 0 15%;
+ border-left:1px dotted #113;
+ padding:4px 0 4em 1ex;
+}
+
+footer {
+ text-align:center;
+ margin: 0 15%;
+ padding:4px 0 4em 1ex;
 }

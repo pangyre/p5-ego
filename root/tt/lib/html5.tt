@@ -7,9 +7,13 @@
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
 <body>
- <header>
+
+ <header id="ego">
+  <img src="[% c.uri_for("/img/ego/ego-renewable.png") %]" />
   <h1>[% title || "Untitled page: " _ c.config.name %]</h1>
  </header>
+
+ <div id="content">
 [% content %]
 
 <h3>To do</h3>
@@ -19,11 +23,15 @@ legal page alla http://diveintohtml5.org/legal.html ... should be able
 to discover plugins etc.
  
 [% END %]
-  <footer>
-<small>
-Yesh is free open source software released under the <a itemprop="license" href="http://www.perlfoundation.org/artistic_license_2_0">Artistic License 2.0</a> &middot; <a href="http://github.com/pangyre/p5-ego">Yesh on Github</a>
-</a>
-</small>
-  </footer>
+
+ </div>
+ <footer>
+  <small>
+Ego is free open source software released under
+the <a itemprop="license"
+       href="http://www.perlfoundation.org/artistic_license_2_0">Artistic
+    License 2.0</a> &middot; <a href="http://github.com/pangyre/p5-ego">Ego on Github</a>
+  </small>
+ </footer>
  </body>
 </html>
