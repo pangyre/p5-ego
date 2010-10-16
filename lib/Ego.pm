@@ -42,7 +42,7 @@ __PACKAGE__->config(
                         class => "OpenID",
                     },
                     # consumer_secret => "Don't bother setting",
-                    ua_class => "LWP::UserAgent",
+                    ua_class => "LWPx::ParanoidAgent",
                     # whitelist is only relevant for LWPx::ParanoidAgent
                     ua_args => {
                         whitelisted_hosts => [qw/ 127.0.0.1 localhost /],
@@ -54,6 +54,7 @@ __PACKAGE__->config(
                             optional => 'fullname,nickname,timezone',
                         },
                         ],
+                    flatten_extensions_into_user => 1,
                 },
             },
         },
