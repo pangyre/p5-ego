@@ -11,7 +11,19 @@
   <h1>[% title || "Untitled page: " _ c.config.name %]</h1>
  </header>
 [% content %]
+
+<h3>To do</h3>
+
+[% FILTER html_para %]
+legal page alla http://diveintohtml5.org/legal.html ... should be able
+to discover plugins etc.
+ 
+[% END %]
   <footer>
+<small>
+Yesh is free open source software released under the <a itemprop="license" href="http://www.perlfoundation.org/artistic_license_2_0">Artistic License 2.0</a> &middot; <a href="http://github.com/pangyre/p5-ego">Yesh on Github</a>
+</a>
+</small>
   </footer>
  </body>
 </html>
