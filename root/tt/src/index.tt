@@ -1,6 +1,6 @@
 O HAI
 
-<form action="[% c.uri_for('/openid') %]" method="GET" name="openid">
+<form action="[% c.uri_for('/') %]" method="GET" name="openid">
   <input type="text" name="openid_identifier" class="openid" />
   <input type="submit" value="Sign in with OpenID" />
 </form>
