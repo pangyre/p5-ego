@@ -1,1 +1,6 @@
-O NOES: [% message || "Unknown error" %]
+[% TRY %]
+  [% PROCESS "src/error/${c.response.status}.tt" %]
+[% CATCH %]
+<!-- TT2 caught error [% error %] -->
+  O NOES: [% message || "Unknown error" %]
+[% END %]

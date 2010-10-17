@@ -34,10 +34,8 @@ sub end :Private {
     # If there was an error in the render, process it and re-render.
     if ( @{ $c->error } )
     {
-        warn @{ $c->error };
+        $c->log->debug("Caught errors in initial render: ", join(" + ", @{ $c->error }));
         $c->forward("Error");
-        $c->forward("render");
-        $c->clear_errors;
     }
 
     # Still something wrong!? Plain text time.

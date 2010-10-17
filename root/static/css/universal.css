@@ -4,21 +4,32 @@ body {
  font-family:"helvetica neue", helvetica, sans-serif;
  font-size:.8em; 
  line-height:1.125em; /* 16 font-size:0.75em; */
+ margin:0 10%;
 }
 
 header {
- margin:20px 0 0 10%;
+ margin:20px 0 0 0;
  padding:0;
  border:0;
 }
+
 #content {
- margin:20px 20% 0 15%;
+ margin: 1ex 10% 0 50px;
  border-left:1px dotted #113;
  padding:4px 0 4em 1ex;
 }
 
 footer {
  text-align:center;
- margin: 0 15%;
+ margin:0 10% 0 50px;
  padding:4px 0 4em 1ex;
+}
+
+#authentication {
+ float:right;
+ margin-top:-5em;
+}
+
+input[type="url"] {
+ width:15em;
 }

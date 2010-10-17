@@ -1,0 +1,21 @@
+<div id="authentication">
+
+[%-IF c.user_exists-%]
+Signed-in as <a href="[% c.user.url | html %]">[% c.user.display | html %]</a>
+ &middot;
+
+<a href="/auth">Sign-out</a>
+
+[%-ELSE-%]
+
+<form action="[% c.uri_for('/auth') %]" method="GET" name="openid">
+ <fieldset>
+  <legend>Sign-in</legend>
+   <input placeholder="Your OpenID URL" type="url" name="openid_identifier" class="openid" />
+   <input type="submit" value="Sign-in with OpenID" />
+ </fieldset>
+</form>
+
+[%-END-%]
+
+</div>

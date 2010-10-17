@@ -9,8 +9,9 @@
 <body>
 
  <header id="ego">
-  <img src="[% c.uri_for("/img/ego/ego-renewable.png") %]" />
+  <a href="[% c.uri_for("/") %]"><img src="[% c.uri_for("/img/ego/ego-renewable.png") %]" /></a>
   <h1>[% title || "Untitled page: " _ c.config.name %]</h1>
+  [%-PROCESS lib/authentication.tt -%]
  </header>
 
  <div id="content">

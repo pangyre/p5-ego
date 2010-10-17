@@ -21,7 +21,10 @@ sub process :Private {
                              $status,
                              status_message($status), )
         );
-    1;
+
+    $c->clear_errors;
+    $c->forward("/render");
+
 }
 
 #sub index :Path :Args(0) {
