@@ -4,7 +4,7 @@
 Signed-in as <a href="[% c.user.url | html %]">[% c.user.display | html %]</a>
  &middot;
 
-<a href="/auth">Sign-out</a>
+<a href="[% c.uri_for("/auth/out") %]">Sign-out</a>
 
 [%-ELSE-%]
 

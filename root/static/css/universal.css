@@ -1,5 +1,9 @@
+img {
+ border:none;
+}
+
 body {
- background-color:#fffffd;
+ background-color:#f8faf9;
  color:#001;
  font-family:"helvetica neue", helvetica, sans-serif;
  font-size:.8em; 
@@ -14,15 +18,19 @@ header {
 }
 
 #content {
- margin: 1ex 10% 0 50px;
+ margin:1ex 10% 0 50px;
  border-left:1px dotted #113;
- padding:4px 0 4em 1ex;
+ padding:0;
+}
+
+#content > * {
+ margin-left:1em;
 }
 
 footer {
  text-align:center;
  margin:0 10% 0 50px;
- padding:4px 0 4em 1ex;
+ padding:4px 0;
 }
 
 #authentication {
@@ -32,4 +40,23 @@ footer {
 
 input[type="url"] {
  width:15em;
+}
+
+article, aside, footer, #authentication {
+ border:1px solid #99a;
+ border:1px solid #aab;
+ border-radius:1ex 0;
+ background-color:#fefeff;
+ padding: 2px 1ex;
+ box-shadow:2px 3px 3px rgba(0,0,33,0.53);
+ -webkit-box-shadow:2px 3px 3px rgba(0,0,33,0.53);
+ -moz-box-shadow:2px 3px 3px    rgba(0,0,33,0.53);
+}
+
+fieldset {
+ border:1px solid #aab;
+ box-shadow:2px 3px 3px rgba(0,0,33,0.53);
+ -webkit-box-shadow:2px 3px 3px rgba(0,0,33,0.53);
+ -moz-box-shadow:2px 3px 3px    rgba(0,0,33,0.53);
+
 }

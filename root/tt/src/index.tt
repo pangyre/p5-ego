@@ -1,4 +1,4 @@
-<h3>O HAI, <a href="[% c.user.url %]">[% c.user.nickname | html %]</a></h3>
+<h3>O HAI, <a href="[% c.user.display %]">[% ( c.user.nickname || c.user.display ) | html %]</a></h3>
 
 <p>
 [% c.user.url %]
@@ -7,3 +7,5 @@
 <br />
 [% c.user.rss || "none" %]
 </p>
+
+

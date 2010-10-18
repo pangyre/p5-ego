@@ -5,6 +5,14 @@
   <link rel="stylesheet" type="text/css" href="[% c.uri_for("/css/universal.css") %]" />
 [%-# feed, prev, next, opensearch, etc %]
   <link rel="shortcut icon" href="/favicon.ico" />
+<script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script type="text/javascript">//<![CDATA[
+jQuery(function($) {
+});
+//]]> </script>
 </head>
 <body>
 
@@ -15,7 +23,8 @@
  </header>
 
  <div id="content">
-[% content %]
+
+[% content | html_para %]
 
 <h3>To do</h3>
 
