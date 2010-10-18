@@ -47,7 +47,7 @@ article, aside, footer, #authentication {
  border:1px solid #aab;
  border-radius:1ex 0;
  background-color:rgba(253,253,255,0.9);
- padding: 2px 1ex;
+ padding: 2px .9ex 3px 1ex;
  box-shadow:2px 3px 3px rgba(0,0,33,0.53);
  -webkit-box-shadow:2px 3px 3px rgba(0,0,33,0.53);
  -moz-box-shadow:2px 3px 3px    rgba(0,0,33,0.53);
@@ -64,15 +64,16 @@ fieldset {
 
 
 article {
-  clear:both;
+ clear:both;
+ margin:1ex auto;
 }
 
 aside {
  float:right;
  width:15em;
- margin:-3ex -7em 2px 1ex;
+ margin:-3ex -7em 3px 1ex;
  font-size:90%;
- background-color:rgba(250,250,250,0.88);
+ background-color:rgba(255,255,245,0.88);
 }
 
 h1 {
@@ -84,6 +85,6 @@ h1 {
 
 article h1 {
  font-family:"trebuchet ms";
- font-size:1.7em;
+ font-size:1.5em;
  padding-right:5em;
 }
