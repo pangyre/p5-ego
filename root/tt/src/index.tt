@@ -1,11 +1,5 @@
-<h3>O HAI, <a href="[% c.user.display %]">[% ( c.user.nickname || c.user.display ) | html %]</a></h3>
-
-<p>
-[% c.user.url %]
- &middot; 
-[% c.user.display %]
-<br />
-[% c.user.rss || "none" %]
-</p>
-
+[% articles = [ 1 .. 3 ] %]
+[% FOR article IN articles %]
+ [% PROCESS lib/article.tt %]
+[% END %]
 

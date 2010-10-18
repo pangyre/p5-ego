@@ -1,5 +1,14 @@
 <article>
   <h1>H1 Here</h1>
-  <time></time>
-  <aside>aside</aside>
+  <time>[% %]31 October 2012</time>
+  <aside>
+<script type="text/javascript"
+ src="http://elektrum.org/js/greeking.js?pc=1,2">
+</script>
+  </aside>
+
+<script type="text/javascript"
+ src="http://elektrum.org/js/greeking.js?pc=2,5">
+</script>
+
 </article>
