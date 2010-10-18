@@ -1,5 +1,7 @@
 <article>
-  <h1>H1 Here</h1>
+  <h1><script type="text/javascript"
+ src="http://elektrum.org/js/greeking.js?type=title">
+</script></h1>
   <time>[% %]31 October 2012</time>
   <aside>
 <script type="text/javascript"
