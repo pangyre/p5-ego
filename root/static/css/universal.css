@@ -62,9 +62,9 @@ fieldset {
 
 }
 
-
 article {
  clear:both;
+ width:100%;
  margin:1ex auto;
 }
 

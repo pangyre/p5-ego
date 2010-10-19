@@ -3,3 +3,10 @@
  [% PROCESS lib/article.tt %]
 [% END %]
 
+
+<script type="text/javascript">
+jQuery(function($) {
+ var string = $("time:first").text().substr(0,1);
+// alert(string);
+});
+</script>
