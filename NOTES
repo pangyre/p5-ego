@@ -1,0 +1,3 @@
+clear ; echo ".schema " | sqlite3 tmp.sqlt
+
+clear ; rm -f tmp.sqlt ; cat etc/SQLite.sql | sqlite3 tmp.sqlt
