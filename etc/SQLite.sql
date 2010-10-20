@@ -1,6 +1,6 @@
 -- 
--- Created by SQL::Translator::Producer::SQLite
--- Created on Tue Oct 19 17:43:05 2010
+-- Stubs by SQL::Translator::Producer::SQLite
+-- Modified to support more modern SQLite features.
 -- 
 
 BEGIN TRANSACTION;
@@ -8,7 +8,7 @@ BEGIN TRANSACTION;
 --
 -- Table: article_role
 --
-DROP TABLE article_role;
+DROP TABLE IF EXISTS article_role;
 
 CREATE TABLE article_role (
   id INTEGER PRIMARY KEY NOT NULL,
@@ -23,7 +23,7 @@ CREATE UNIQUE INDEX name ON article_role (name);
 --
 -- Table: attribute
 --
-DROP TABLE attribute;
+DROP TABLE IF EXISTS attribute;
 
 CREATE TABLE attribute (
   id INTEGER PRIMARY KEY NOT NULL,
@@ -35,7 +35,7 @@ CREATE UNIQUE INDEX attribute_name ON attribute (name);
 --
 -- Table: filter
 --
-DROP TABLE filter;
+DROP TABLE IF EXISTS filter;
 
 CREATE TABLE filter (
   id INTEGER PRIMARY KEY NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE filter (
 --
 -- Table: license
 --
-DROP TABLE license;
+DROP TABLE IF EXISTS license;
 
 CREATE TABLE license (
   id INTEGER PRIMARY KEY NOT NULL,
@@ -70,7 +70,7 @@ CREATE UNIQUE INDEX uri ON license (uri);
 --
 -- Table: nice_uri
 --
-DROP TABLE nice_uri;
+DROP TABLE IF EXISTS nice_uri;
 
 CREATE TABLE nice_uri (
   article INT(10) NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE nice_uri (
 --
 -- Table: role
 --
-DROP TABLE role;
+DROP TABLE IF EXISTS role;
 
 CREATE TABLE role (
   id BINARY(36) NOT NULL DEFAULT '',
@@ -99,7 +99,7 @@ CREATE UNIQUE INDEX name02 ON role (name);
 --
 -- Table: site_role
 --
-DROP TABLE site_role;
+DROP TABLE IF EXISTS site_role;
 
 CREATE TABLE site_role (
   id INTEGER PRIMARY KEY NOT NULL,
@@ -115,7 +115,7 @@ CREATE UNIQUE INDEX name03 ON site_role (name);
 --
 -- Table: tag
 --
-DROP TABLE tag;
+DROP TABLE IF EXISTS tag;
 
 CREATE TABLE tag (
   id INTEGER PRIMARY KEY NOT NULL,
@@ -129,7 +129,7 @@ CREATE TABLE tag (
 --
 -- Table: template
 --
-DROP TABLE template;
+DROP TABLE IF EXISTS template;
 
 CREATE TABLE template (
   id INTEGER PRIMARY KEY NOT NULL,
@@ -143,7 +143,7 @@ CREATE TABLE template (
 --
 -- Table: user
 --
-DROP TABLE user;
+DROP TABLE IF EXISTS user;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY NOT NULL,
@@ -179,7 +179,7 @@ CREATE INDEX display_group_idx_template ON display_group (template);
 --
 -- Table: fragment
 --
-DROP TABLE fragment;
+DROP TABLE IF EXISTS fragment;
 
 CREATE TABLE fragment (
   id INTEGER PRIMARY KEY NOT NULL,
@@ -189,7 +189,8 @@ CREATE TABLE fragment (
   css_class TINYTEXT NOT NULL,
   body MEDIUMTEXT NOT NULL,
   created DATETIME(19) NOT NULL,
-  updated TIMESTAMP(14)
+  updated TIMESTAMP(14),
+  FOREIGN KEY(template) REFERENCES template(id)
 );
 
 CREATE INDEX fragment_idx_template ON fragment (template);
@@ -197,14 +198,17 @@ CREATE INDEX fragment_idx_template ON fragment (template);
 --
 -- Table: user_article_role
 --
-DROP TABLE user_article_role;
+DROP TABLE IF EXISTS user_article_role;
 
 CREATE TABLE user_article_role (
   user INT(10) NOT NULL,
   article_role INT(10) NOT NULL,
   created DATETIME(19) NOT NULL,
   updated TIMESTAMP(14),
-  PRIMARY KEY (user, article_role)
+  PRIMARY KEY (user, article_role),
+  FOREIGN KEY(user) REFERENCES user(id),
+  FOREIGN KEY(article_role) REFERENCES article_role(id)
+
 );
 
 CREATE INDEX user_article_role_idx_article_role ON user_article_role (article_role);
@@ -214,13 +218,14 @@ CREATE INDEX user_article_role_idx_user ON user_article_role (user);
 --
 -- Table: user_attribute
 --
-DROP TABLE user_attribute;
+DROP TABLE IF EXISTS user_attribute;
 
 CREATE TABLE user_attribute (
   user INT(10) NOT NULL,
   attribute INT(10) NOT NULL,
   value MEDIUMTEXT NOT NULL,
-  PRIMARY KEY (user, attribute)
+  PRIMARY KEY (user, attribute),
+  FOREIGN KEY(user) REFERENCES user(id)
 );
 
 CREATE INDEX user_attribute_idx_attribute ON user_attribute (attribute);
@@ -230,7 +235,7 @@ CREATE INDEX user_attribute_idx_user ON user_attribute (user);
 --
 -- Table: user_site_role
 --
-DROP TABLE user_site_role;
+DROP TABLE IF EXISTS user_site_role;
 
 CREATE TABLE user_site_role (
   user INT NOT NULL,
@@ -247,7 +252,7 @@ CREATE INDEX user_site_role_idx_user ON user_site_role (user);
 --
 -- Table: article
 --
-DROP TABLE article;
+DROP TABLE IF EXISTS article;
 
 CREATE TABLE article (
   id INTEGER PRIMARY KEY NOT NULL,
@@ -261,16 +266,16 @@ CREATE TABLE article (
   note TEXT,
   status ENUM(8) DEFAULT 'draft',
   comment_flag ENUM(6) DEFAULT 'on',
-  live_license INT(10),
   golive DATETIME(19) NOT NULL,
-  takedown DATETIME(19) NOT NULL DEFAULT '9999-12-31 00:00:00',
+  takedown DATETIME(19), -- Can be NULL!
   created DATETIME(19) NOT NULL,
-  updated TIMESTAMP(14)
+  updated TIMESTAMP(14),
+  FOREIGN KEY(license) REFERENCES license(id),
+  FOREIGN KEY(user) REFERENCES user(id),
+  FOREIGN KEY(parent) REFERENCES article(id)
 );
 
 CREATE INDEX article_idx_license ON article (license);
-
-CREATE INDEX article_idx_live_license ON article (live_license);
 
 CREATE INDEX article_idx_parent ON article (parent);
 
@@ -281,7 +286,7 @@ CREATE INDEX article_idx_user ON article (user);
 --
 -- Table: fragment_filter
 --
-DROP TABLE fragment_filter;
+DROP TABLE IF EXISTS fragment_filter;
 
 CREATE TABLE fragment_filter (
   fragment INT(10) NOT NULL,
@@ -299,7 +304,7 @@ CREATE INDEX fragment_filter_idx_fragment ON fragment_filter (fragment);
 --
 -- Table: comment
 --
-DROP TABLE comment;
+DROP TABLE IF EXISTS comment;
 
 CREATE TABLE comment (
   id INTEGER PRIMARY KEY NOT NULL,
@@ -328,7 +333,7 @@ CREATE INDEX comment_idx_user ON comment (user);
 --
 -- Table: article_display_group
 --
-DROP TABLE article_display_group;
+DROP TABLE IF EXISTS article_display_group;
 
 CREATE TABLE article_display_group (
   article INT(10) NOT NULL,
@@ -344,7 +349,7 @@ CREATE INDEX article_display_group_idx_display_group ON article_display_group (d
 --
 -- Table: article_fragment
 --
-DROP TABLE article_fragment;
+DROP TABLE IF EXISTS article_fragment;
 
 CREATE TABLE article_fragment (
   article INT(10) NOT NULL,
@@ -362,7 +367,7 @@ CREATE INDEX article_fragment_idx_fragment ON article_fragment (fragment);
 --
 -- Table: article_tag
 --
-DROP TABLE article_tag;
+DROP TABLE IF EXISTS article_tag;
 
 CREATE TABLE article_tag (
   article INT(10) NOT NULL,
